@@ -1,0 +1,456 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  line-height: 1.5;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  outline: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+html {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(to right, #fd74a4, #d072a3, #a16ea3);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  user-select: none;
+  color: #515c6f;
+}
+
+.container {
+  background-color: #f5f5f5;
+  width: 380px;
+  height: 583px;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  overflow: hidden;
+}
+
+.container__volume {
+  width: fit-content;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.container__volume * {
+  pointer-events: none;
+}
+
+input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgb(130, 194, 192);
+  height: 3px;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 70%;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #ccc, #8e8b8b);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.container__volume-control {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgb(247, 247, 247);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 50px;
+  width: 120px;
+  border-radius: inherit;
+  padding: 15px 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transform: translateY(calc(-100% - 10px));
+  transition: transform 0.3s linear;
+}
+
+.container__volume-control.active {
+  transform: translateY(0);
+}
+.container__volume-control i {
+  width: 20px;
+}
+.container__volume i,
+.container__volume-control i {
+  color: #515c6f;
+}
+.container h1 {
+  text-align: center;
+  background: linear-gradient(to right, #fd74a4, #d072a3, #a16ea3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 20px;
+  font-weight: 600;
+}
+.music__present-wrap {
+  position: relative;
+}
+.music__img {
+  width: 250px;
+  height: 250px;
+  margin: 20px auto;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: rgb(100 100 111 / 20%) 0px 0px 11px 15px;
+}
+
+.music__present-wrap #bars {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.music__img.active {
+  animation: spin 5s linear forwards infinite !important;
+}
+.music__img.unactive {
+  animation: stop 0.5s ease-in-out;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stop {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.music__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.music__info {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #515c6f;
+}
+
+.music__progress-bar {
+  position: relative;
+  height: 4px;
+  background-color: #d6d6d6;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 50px;
+}
+.music__progress-bar * {
+  pointer-events: none;
+}
+
+.music__progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 20px;
+}
+
+.music__progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 0%;
+  height: 6px;
+  background: linear-gradient(to right, #fd74a4, #d072a3, #a16ea3);
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.music__progress::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #fd74a4, #d072a3, #a16ea3);
+  visibility: hidden;
+  transition: visibility 0.2s linear;
+  opacity: 0;
+}
+.music__progress-bar:hover .music__progress::before {
+  visibility: visible;
+  opacity: 1;
+}
+.music__time {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.music__control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.music__control i {
+  color: transparent;
+  background: linear-gradient(to right, #fd74a4 0%, #d072a3, #a16ea3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  cursor: pointer;
+  font-size: 30px;
+  padding: 5px 10px;
+}
+
+.music__control-playpause {
+  background-color: #fff;
+  box-shadow: rgba(205, 136, 192, 0.2) 0px 0px 0px 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #fd74a4 0%, #d072a3, #a16ea3);
+  cursor: pointer;
+}
+
+.music__control-playpause * {
+  pointer-events: none;
+}
+
+.music__control-playpause i {
+  color: #fff;
+}
+
+/* music__list */
+
+.container__music-field {
+  position: absolute;
+  background-color: #f5f5f5;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: inherit;
+  border-radius: inherit;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  height: 250px;
+  transform: translateY(100%);
+  transition: all 0.4s ease-in-out;
+}
+
+.container__music-field.active {
+  transform: translateY(0);
+}
+
+.container__music-field::-webkit-scrollbar {
+  display: none;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding-bottom: 10px;
+}
+
+.info__left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.info__right {
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info__right * {
+  pointer-events: none;
+}
+.music__list {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  height: 80%;
+}
+
+.music__list::-webkit-scrollbar {
+  display: none;
+}
+
+.music__list li {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  cursor: pointer;
+  height: 60px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.music__list li {
+  border-top: 1px solid #ccc;
+}
+.music__list li h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.music__list li.active {
+  background: linear-gradient(to right, #fd74a4, #d072a3);
+  color: #fff;
+  border-radius: 10px;
+}
+
+.music__list li.active .music__duration {
+  display: none;
+}
+.music__present-wrap.active #bars,
+.music__list li.active #bars {
+  display: block;
+}
+
+#bars {
+  height: 40px;
+  width: 40px;
+  position: relative;
+  display: none;
+}
+
+.bar {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.658);
+  height: 3px;
+  width: 3px;
+  animation: sound 0ms -800ms linear infinite alternate;
+  bottom: 0;
+}
+
+@keyframes sound {
+  0% {
+    opacity: 0.35;
+    height: 3px;
+  }
+  100% {
+    opacity: 1;
+    height: 40px;
+  }
+}
+
+.bar:nth-child(1) {
+  left: 1px;
+  animation-duration: 474ms;
+}
+.bar:nth-child(2) {
+  left: 5px;
+  animation-duration: 433ms;
+}
+.bar:nth-child(3) {
+  left: 9px;
+  animation-duration: 407ms;
+}
+.bar:nth-child(4) {
+  left: 13px;
+  animation-duration: 458ms;
+}
+.bar:nth-child(5) {
+  left: 17px;
+  animation-duration: 400ms;
+}
+.bar:nth-child(6) {
+  left: 21px;
+  animation-duration: 427ms;
+}
+.bar:nth-child(7) {
+  left: 25px;
+  animation-duration: 441ms;
+}
+.bar:nth-child(8) {
+  left: 29px;
+  animation-duration: 419ms;
+}
+.bar:nth-child(9) {
+  left: 33px;
+  animation-duration: 487ms;
+}
+.bar:nth-child(10) {
+  left: 37px;
+  animation-duration: 442ms;
+}

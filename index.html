@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MP3 player</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="container__volume">
+            <i class="fa-solid fa-volume-low"></i>
+        </div>
+        <div class="container__volume-control">
+            <i class="fa-solid fa-volume-off"></i>
+            <input type="range" name="" id="" value="50" max="100">
+        </div>
+        <h1>NOW PLAYING</h1>
+
+        <div class="music__present-wrap">
+            <div class="music__img ">
+                <img src="" alt="">
+            </div>
+            <div id='bars'>
+                <div class='bar'></div>
+                <div class='bar'></div>
+                <div class='bar'></div>
+                <div class='bar'></div>
+                <div class='bar'></div>
+                <div class='bar'></div>
+                <div class='bar'></div>
+                <div class='bar'></div>
+                <div class='bar'></div>
+                <div class='bar'></div>
+            </div>
+        </div>
+
+        <div class="music__info">
+            <marquee class="music__info-title">Keyo - Muốn em là má</marquee>
+            <p class="music__info-author">Keyo</p>
+        </div>
+
+        <div class="music__progress-bar">
+            <div class="music__progress"></div>
+
+            <div class="music__time">
+                <span class="music__time-main --start">00:00</span>
+                <span class="music__time-main --duration">00:00</span>
+            </div>
+            <audio src="" id="audio"></audio>
+        </div>
+
+        <div class="music__control">
+            <i id="repeat" class="material-symbols-outlined" title="Song loop">
+                repeat
+            </i>
+            <i id="back" data-control="back" class="fa-solid fa-backward-step"></i>
+
+            <div class="music__control-playpause">
+                <i id="playpause" class="fa-solid fa-play"></i>
+            </div>
+
+            <i id="next" data-control="next" class="fa-solid fa-forward-step"></i>
+            <i id="list" class="material-symbols-outlined" title="music list">
+                queue_music
+            </i>
+        </div>
+
+
+        <div class="container__music-field">
+            <!-- <div class="info">
+                <div class="info__left">
+                    <i id="list" class="material-symbols-outlined">queue_music </i>
+                    <h3>Songs list</h3>
+                </div>
+
+                <div class="info__right">
+                    <i class="material-symbols-outlined">close</i>
+                </div>
+            </div>
+
+            <ul class="music__list">
+                <li class="">
+                    <div class="">
+                        <h3>Thay lòng</h3>
+                        <span>Nal</span>
+                    </div>
+                    <audio src="./assets/music/music-1.mp3"></audio>
+                    <span class="music__list-time">00:00</span>
+                </li>
+            </ul> -->
+        </div>
+    </div>
+
+    <script src="./main.js" type="module"></script>
+</body>
+
+</html>
